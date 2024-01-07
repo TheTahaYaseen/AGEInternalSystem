@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="form_container mt-5 px-3 py-4 rounded-3 w-75 mx-auto">
+
+    <p class="form_heading mb-2 fs-1">Login</p>
+    <p class="form_heading mb-2 fs-5">{{error}}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <p class="form_label mt-2 mb-0 fs-4">Username</p>
+        <input class="form_input w-100 rounded-3 px-2 py-1 fs-5" type="text" name="username" value="{{username}}" placeholder="Enter your username">
+        <p class="form_label mt-2 mb-0 fs-4">Password</p>
+        <input class="form_input w-100 rounded-3 px-2 py-1 fs-5" type="password" name="password" value="{{password}}" placeholder="Enter your password">
+
+        <br>
+        <button type="submit" class="form_button mt-4 px-4 py-1 rounded-pill fs-4 border-0">Login</button>
+    </form>
+
+</div>
+
+{% endblock content %}
