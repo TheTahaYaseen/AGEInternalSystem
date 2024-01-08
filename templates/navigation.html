@@ -1,23 +1,26 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-md">
     <div class="container-fluid">
-        <a class="navbar-brand fs-1" href="{% url 'home' %}">AGE</a>
+        <a class="navbar-brand fs-1 me-4" href="{% url 'home' %}">AGE</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
                     {% if request.user.is_authenticated %}
 
                     {% if request.user.is_superuser %}
                     <li class="nav-item">
-                        <a class="nav-link fs-4" aria-current="page" href="{% url 'roles' %}">Roles</a>
+                        <a class="nav-link me-1 fs-4" aria-current="page" href="{% url 'roles' %}">Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link me-1 fs-4" aria-current="page" href="{% url 'bank_accounts' %}">Bank Accounts</a>
                     </li>
                     {% endif %}
 
-                    <a class="nav-link fs-4" aria-current="page" href="{% url 'logout' %}">Logout</a>
+                    <a class="nav-link me-1 fs-4" aria-current="page" href="{% url 'logout' %}">Logout</a>
                     {% else %}
-                    <a class="nav-link fs-4" aria-current="page" href="{% url 'login' %}">Login</a>
+                    <a class="nav-link me-1 fs-4" aria-current="page" href="{% url 'login' %}">Login</a>
                     {% endif %}
                 </li>
             </ul>

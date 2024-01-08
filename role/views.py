@@ -93,28 +93,29 @@ def update_view(request, role_id):
             if role != associated_role.role:
                 try:
                     role = Role.objects.get(role=role)
-                    error = f"Role of {role} already exists!"
+                    if str(role.id) != role_id:                        
+                        error = f"Role of {role} already exists!"
                 except Role.DoesNotExist:
                     pass
 
             if not error:
 
-                    if access_to_shop_management == "No":
-                        access_to_shop_management = False
-                    else:
-                        access_to_shop_management = True
+                if access_to_shop_management == "No":
+                    access_to_shop_management = False
+                else:
+                    access_to_shop_management = True
 
-                    if access_to_factory_management == "No":
-                        access_to_factory_management = False
-                    else:
-                        access_to_factory_management = True
+                if access_to_factory_management == "No":
+                    access_to_factory_management = False
+                else:
+                    access_to_factory_management = True
 
-                    associated_role.role = role
-                    associated_role.access_to_shop_management = access_to_shop_management
-                    associated_role.access_to_factory_management = access_to_factory_management
-                    associated_role.save()
+                associated_role.role = role
+                associated_role.access_to_shop_management = access_to_shop_management
+                associated_role.access_to_factory_management = access_to_factory_management
+                associated_role.save()
 
-            return redirect("roles")
+                return redirect("roles")
 
     context = {"page_title": page_title, "form_action": form_action, "error": error, 
                "role": role, "access_to_shop_management": access_to_shop_management, "access_to_factory_management": access_to_factory_management}

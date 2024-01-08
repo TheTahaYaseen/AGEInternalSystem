@@ -1,0 +1,39 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="container mt-5 px-3 py-4 rounded-3 w-75 mx-auto">
+    <p class="mb-2 fs-1">{{form_action}} Bank Account</p>
+    <p class="mb-2 fs-5">{{error}}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <p class="mt-2 mb-0 fs-4">Bank Name</p>
+        <input
+            class="w-100 rounded-3 px-2 py-1 fs-5"
+            type="text"
+            name="bank_name"
+            value="{{bank_name}}"
+            placeholder="Enter desired bank name"
+            list="bank_accounts_list" />
+        <datalist id="bank_accounts_list">
+            {% for bank in banks %}
+            <option value="{{bank.name}}">{{bank.name}}</option>
+            {% endfor %}
+        </datalist>
+
+        <p class="mt-2 mb-0 fs-4">Account Number</p>
+        <input
+            class="w-100 rounded-3 px-2 py-1 fs-5"
+            type="number"
+            name="account_number"
+            value="{{account_number}}"
+            placeholder="Enter desired account number" />
+
+        <br />
+        <button type="submit" class="mt-4 px-4 py-1 rounded-pill fs-4 border-0">
+            {{form_action}}
+        </button>
+    </form>
+</div>
+
+{% endblock content %}
