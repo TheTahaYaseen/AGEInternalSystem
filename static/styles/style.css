@@ -1,4 +1,4 @@
-* {
+body {
 	font-family: "Neuton", serif;
 }
 
@@ -14,18 +14,18 @@
 	color: #232b4b;
 }
 
-.form_container {
+.container {
 	background-color: #e9d8e4;
 	border: #343f71 solid 3px;
 	color: #232b4b;
 }
 
-.form_button {
+button {
 	color: white;
 	background-color: #232b4b;
 }
 
-.form_button:hover {
+button:hover {
 	color: #232b4b;
 	background-color: white;
 }

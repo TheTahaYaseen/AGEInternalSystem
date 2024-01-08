@@ -1,0 +1,19 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="container mt-5 px-3 py-4 rounded-3 w-75 mx-auto">
+	<p class="mb-2 fs-1">Delete</p>
+	<p class="mb-2 fs-2">{{item_category}}</p>
+
+	<p class="mb-2 fs-4">
+		Are you sure you want to delete {{item_category}}: {{item}}?
+	</p>
+
+	<form method="POST">
+		{% csrf_token %}
+		<button type="submit" class="mt-2 px-4 py-1 rounded-pill fs-3 border-0">
+			Delete
+		</button>
+	</form>
+</div>
+
+{% endblock content %}
