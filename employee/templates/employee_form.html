@@ -1,7 +1,7 @@
 {% extends "layout.html" %} {% block content %}
 
 <div class="container mt-5 px-3 py-4 rounded-3 w-75 mx-auto">
-    <p class="mb-2 fs-1">{{form_action}} Company</p>
+    <p class="mb-2 fs-1">{{form_action}} Employee</p>
     <p class="mb-2 fs-5">{{error}}</p>
 
     <form method="POST">
@@ -11,9 +11,21 @@
         <input
             class="w-100 rounded-3 px-2 py-1 fs-5"
             type="text"
-            name="company_name"
-            value="{{company_name}}"
-            placeholder="Enter desired company name" />
+            name="employee_name"
+            value="{{employee_name}}"
+            placeholder="Enter desired employee name" />
+
+        <p class="mt-2 mb-0 fs-4">Associated Role</p>
+        <select
+            class="w-100 rounded-3 px-2 py-1 fs-5"
+            type="number"
+            name="associated_role"
+            value="{{associated_role}}"
+            placeholder="Enter desired associated role number">
+            {% for role in roles %}
+                <option value="{{role.role}}" {% if associated_role == role.role %} selected {% endif %} >{{role.role}}</option>
+            {% endfor %}
+        </select>
 
         <p class="mt-2 mb-0 fs-4">Associated Bank Account (If Any)</p>
         <select

@@ -23,9 +23,10 @@ body {
 button {
 	color: white;
 	background-color: #232b4b;
+	border: #232b4b solid 2px;
 }
 
 button:hover {
 	color: #232b4b;
-	background-color: white;
+	background-color: unset;
 }

@@ -2,9 +2,7 @@
 
 <div class="col-lg-6 col-md-9 col-11 mx-auto">
 	<a href="{% url 'add_company' %}">
-		<button class="mt-4 px-4 py-1 rounded-pill fs-4 border-0">
-			Add Company
-		</button>
+		<button class="mt-4 px-4 py-1 rounded-pill fs-4">Add Company</button>
 	</a>
 
 	{% for company in companies %}
@@ -13,17 +11,17 @@
 		<p class="m-0 fs-3">{{company.name}}</p>
 
 		{% if company.associated_bank_account %}
-		<p class="m-0 fs-5">
+		<p class="m-0 fs-6 mb-1">
 			Associated Bank Account:
 			{{company.associated_bank_account.account_number}}
 			({{company.associated_bank_account.associated_bank.name}})
 		</p>
 		{% endif %}
 		<a href="{% url 'update_company' company.id %}">
-			<button class="px-3 py-1 rounded-pill fs-5 border-0">Update</button>
+			<button class="px-3 rounded-pill fs-5">Update</button>
 		</a>
 		<a href="{% url 'delete_company' company.id %}">
-			<button class="px-3 py-1 rounded-pill fs-5 border-0">Delete</button>
+			<button class="px-3 rounded-pill fs-5">Delete</button>
 		</a>
 	</div>
 

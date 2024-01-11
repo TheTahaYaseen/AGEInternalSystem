@@ -1,0 +1,35 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="col-lg-6 col-md-9 col-11 mx-auto">
+	<a href="{% url 'add_employee' %}">
+		<button class="mt-4 px-4 py-1 rounded-pill fs-4">Add Employee</button>
+	</a>
+
+	{% for employee in employees %}
+
+	<div class="container mt-4 py-2 rounded-3">
+		<p class="m-0 fs-3">{{employee.name}}</p>
+		<p class="m-0 fs-5">{{employee.associated_role.role}}</p>
+
+		{% if employee.associated_bank_account %}
+		<p class="m-0 fs-6">
+			Associated Bank Account:
+			{{employee.associated_bank_account.account_number}}
+			({{employee.associated_bank_account.associated_bank.name}})
+		</p>
+		{% endif %}
+
+		<p class="m-0 mt-2"></p>
+
+		<a href="{% url 'update_employee' employee.id %}">
+			<button class="px-3 rounded-pill fs-5">Update</button>
+		</a>
+		<a href="{% url 'delete_employee' employee.id %}">
+			<button class="px-3 rounded-pill fs-5">Delete</button>
+		</a>
+	</div>
+
+	{% endfor %}
+</div>
+
+{% endblock content %}

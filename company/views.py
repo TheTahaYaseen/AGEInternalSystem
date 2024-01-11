@@ -31,7 +31,7 @@ def add_view(request):
     
     if request.method == "POST":
         company_name = request.POST.get("company_name") 
-        associated_bank_account_number = request.POST.get("associated_bank_account_number") 
+        associated_bank_account_number = int(request.POST.get("associated_bank_account_number")) if request.POST.get("associated_bank_account_number") else ""  
 
         if company_name == "":
             error = "Donot leave the company name empty!"
@@ -55,7 +55,7 @@ def add_view(request):
     
 
     context = {"page_title": page_title, "form_action": form_action, "error": error, 
-               "company_name": company_name, "associated_bank_account_number": int(associated_bank_account_number), "bank_accounts": bank_accounts}
+               "company_name": company_name, "associated_bank_account_number": associated_bank_account_number, "bank_accounts": bank_accounts}
     return render(request, "company_form.html", context)
 
     
@@ -80,7 +80,7 @@ def update_view(request, company_id):
     
     if request.method == "POST":
         company_name = request.POST.get("company_name") 
-        associated_bank_account_number = request.POST.get("associated_bank_account_number") 
+        associated_bank_account_number = int(request.POST.get("associated_bank_account_number")) if request.POST.get("associated_bank_account_number") else ""  
 
 
         if company_name == "":
@@ -108,7 +108,7 @@ def update_view(request, company_id):
                 return redirect("companies")
 
     context = {"page_title": page_title, "form_action": form_action, "error": error, 
-               "company_name": company_name, "associated_bank_account_number": int(associated_bank_account_number), "bank_accounts": bank_accounts}
+               "company_name": company_name, "associated_bank_account_number": associated_bank_account_number, "bank_accounts": bank_accounts}
     return render(request, "company_form.html", context)
 
 def delete_view(request, company_id):

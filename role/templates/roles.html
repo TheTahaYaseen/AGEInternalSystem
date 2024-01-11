@@ -1,41 +1,29 @@
 {% extends "layout.html" %} {% block content %}
 
 <div class="col-lg-6 col-md-9 col-11 mx-auto">
+	<a href="{% url 'add_role' %}">
+		<button class="mt-4 px-4 py-1 rounded-pill fs-4">Add Role</button>
+	</a>
 
-    <a href="{% url 'add_role' %}">
-        <button class="mt-4 px-4 py-1 rounded-pill fs-4 border-0">
-            Add Role
-        </button>
-    </a>
+	{% for role in roles %}
 
-    {% for role in roles %}
+	<div class="container mt-4 py-2 rounded-3">
+		<p class="m-0 fs-3">{{role.role}}</p>
+		{% if role.access_to_shop_management %}
+		<p class="m-0 fs-6">*Shop management access</p>
+		{% endif %} {% if role.access_to_factory_management %}
+		<p class="m-0 mb-2 fs-6">*Factory management access</p>
+		{% endif %}
+		<span></span>
+		<a href="{% url 'update_role' role.id %}">
+			<button class="px-3 rounded-pill fs-5">Update</button>
+		</a>
+		<a href="{% url 'delete_role' role.id %}">
+			<button class="px-3 rounded-pill fs-5">Delete</button>
+		</a>
+	</div>
 
-    <div class="container mt-4 py-2 rounded-3">
-        <p class="m-0 fs-3">{{role.role}}</p>
-        {% if role.access_to_shop_management %}
-        <p class="m-0 fs-6">
-            *Shop management access
-        </p>
-        {% endif %}
-        {% if role.access_to_factory_management %}
-        <p class="m-0 mb-2 fs-6">
-            *Factory management access
-        </p>
-        {% endif %}
-        <span></span>
-        <a href="{% url 'update_role' role.id %}">
-            <button class="px-3 py-1 rounded-pill fs-5 border-0">
-                Update
-            </button>
-        </a>
-        <a href="{% url 'delete_role' role.id %}">
-            <button class="px-3 py-1 rounded-pill fs-5 border-0">
-                Delete
-            </button>
-        </a>
-    </div>
-
-    {% endfor %}
+	{% endfor %}
 </div>
 
 {% endblock content %}
