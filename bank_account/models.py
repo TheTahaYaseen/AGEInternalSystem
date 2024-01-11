@@ -6,4 +6,4 @@ class Bank(models.Model):
 # Create your models here.
 class BankAccount(models.Model):
     associated_bank = models.ForeignKey(Bank, on_delete=models.CASCADE)
-    account_number = models.IntegerField()
+    account_number = models.IntegerField(unique=True)
