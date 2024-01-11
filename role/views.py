@@ -24,6 +24,7 @@ def add_view(request):
     role = "" 
     access_to_shop_management = "" 
     access_to_factory_management = "" 
+    access_to_warehouse_management = "" 
 
     if not request.user.is_superuser:
         return redirect("home")
@@ -52,16 +53,22 @@ def add_view(request):
                 else:
                     access_to_factory_management = True
 
+                if access_to_warehouse_management == "No":
+                    access_to_warehouse_management = False
+                else:
+                    access_to_warehouse_management = True
+
                 role = Role.objects.create(
                     role=role,
                     access_to_shop_management=access_to_shop_management,
-                    access_to_factory_management=access_to_factory_management
+                    access_to_factory_management=access_to_factory_management,
+                    access_to_warehouse_management=access_to_warehouse_management,
                 )
 
                 return redirect("roles")
 
     context = {"page_title": page_title, "form_action": form_action, "error": error, 
-               "role": role, "access_to_shop_management": access_to_shop_management, "access_to_factory_management": access_to_factory_management}
+               "role": role, "access_to_shop_management": access_to_shop_management, "access_to_factory_management": access_to_factory_management, "access_to_warehouse_management": access_to_warehouse_management}
     return render(request, "role_form.html", context)
 
     
@@ -76,6 +83,7 @@ def update_view(request, role_id):
     role = associated_role.role 
     access_to_shop_management = associated_role.access_to_shop_management 
     access_to_factory_management = associated_role.access_to_factory_management 
+    access_to_warehouse_management = associated_role.access_to_warehouse_management 
 
     if not request.user.is_superuser:
         return redirect("home")
@@ -84,6 +92,7 @@ def update_view(request, role_id):
         role = request.POST.get("role") 
         access_to_shop_management = request.POST.get("access_to_shop_management") 
         access_to_factory_management = request.POST.get("access_to_factory_management") 
+        access_to_warehouse_management = request.POST.get("access_to_warehouse_management") 
 
         if role == "":
             error = "Donot leave the role empty!"
@@ -110,15 +119,21 @@ def update_view(request, role_id):
                 else:
                     access_to_factory_management = True
 
+                if access_to_warehouse_management == "No":
+                    access_to_warehouse_management = False
+                else:
+                    access_to_warehouse_management = True
+
                 associated_role.role = role
                 associated_role.access_to_shop_management = access_to_shop_management
                 associated_role.access_to_factory_management = access_to_factory_management
+                associated_role.access_to_warehouse_management = access_to_warehouse_management
                 associated_role.save()
 
                 return redirect("roles")
 
     context = {"page_title": page_title, "form_action": form_action, "error": error, 
-               "role": role, "access_to_shop_management": access_to_shop_management, "access_to_factory_management": access_to_factory_management}
+               "role": role, "access_to_shop_management": access_to_shop_management, "access_to_factory_management": access_to_factory_management, "access_to_warehouse_management": access_to_warehouse_management}
     return render(request, "role_form.html", context)
 
 def delete_view(request, role_id):

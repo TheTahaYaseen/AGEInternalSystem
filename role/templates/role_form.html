@@ -39,6 +39,18 @@
             </option>
         </select>
 
+        <p class="mt-2 mb-0 fs-4">Allowed to access warehouse management?</p>
+        <select
+            class="w-100 rounded-3 px-2 py-1 fs-5"
+            name="access_to_warehouse_management">
+            <option>
+                No
+            </option>
+            <option {% if access_to_warehouse_management %} selected {% endif %}value="True">
+                Yes
+            </option>
+        </select>
+
         <br />
         <button type="submit" class="mt-4 px-4 py-1 rounded-pill fs-4">
             {{form_action}}

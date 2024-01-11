@@ -11,10 +11,13 @@
 		<p class="m-0 fs-3">{{role.role}}</p>
 		{% if role.access_to_shop_management %}
 		<p class="m-0 fs-6">*Shop management access</p>
-		{% endif %} {% if role.access_to_factory_management %}
-		<p class="m-0 mb-2 fs-6">*Factory management access</p>
 		{% endif %}
-		<span></span>
+		{% if role.access_to_factory_management %}
+		<p class="m-0 fs-6">*Factory management access</p>
+		{% endif %}
+		{% if role.access_to_warehouse_management %}
+		<p class="m-0 mb-2 fs-6">*Warehouse management access</p>
+		{% endif %}
 		<a href="{% url 'update_role' role.id %}">
 			<button class="px-3 rounded-pill fs-5">Update</button>
 		</a>
