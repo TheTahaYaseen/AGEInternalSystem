@@ -23,7 +23,7 @@
             value="{{associated_role}}"
             placeholder="Enter desired associated role number">
             {% for role in roles %}
-                <option value="{{role.role}}" {% if associated_role == role.role %} selected {% endif %} >{{role.role}}</option>
+            <option value="{{role.role}}" {% if associated_role == role.role %} selected {% endif %}>{{role.role}}</option>
             {% endfor %}
         </select>
 
@@ -36,9 +36,17 @@
             placeholder="Enter desired associated bank account number">
             <option value>None</option>
             {% for bank_account in bank_accounts %}
-                <option value="{{bank_account.account_number}}" {% if associated_bank_account_number == bank_account.account_number %} selected {% endif %} >{{bank_account.account_number}} ({{bank_account.associated_bank.name}})</option>
+            <option value="{{bank_account.account_number}}" {% if associated_bank_account_number == bank_account.account_number %} selected {% endif %}>{{bank_account.account_number}} ({{bank_account.associated_bank.name}})</option>
             {% endfor %}
         </select>
+
+        <p class="mt-2 mb-0 fs-4">Password{% if form_action == "Update" %} (Leave Empty If Not Willing To Update){% endif %}</p>
+        <input
+            class="w-100 rounded-3 px-2 py-1 fs-5"
+            type="password"
+            name="employee_password"
+            value="{{employee_password}}"
+            placeholder="Enter desired employee password" />
 
         <br />
         <button type="submit" class="mt-4 px-4 py-1 rounded-pill fs-4">

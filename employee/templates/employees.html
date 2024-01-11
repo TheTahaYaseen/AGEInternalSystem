@@ -10,6 +10,7 @@
 	<div class="container mt-4 py-2 rounded-3">
 		<p class="m-0 fs-3">{{employee.name}}</p>
 		<p class="m-0 fs-5">{{employee.associated_role.role}}</p>
+		<p class="m-0 fs-6">Login Username: {{employee.associated_user.username}}</p>
 
 		{% if employee.associated_bank_account %}
 		<p class="m-0 fs-6">
