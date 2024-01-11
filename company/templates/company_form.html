@@ -1,0 +1,38 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="container mt-5 px-3 py-4 rounded-3 w-75 mx-auto">
+    <p class="mb-2 fs-1">{{form_action}} Company</p>
+    <p class="mb-2 fs-5">{{error}}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <p class="mt-2 mb-0 fs-4">Name</p>
+        <input
+            class="w-100 rounded-3 px-2 py-1 fs-5"
+            type="text"
+            name="company_name"
+            value="{{company_name}}"
+            placeholder="Enter desired company name" />
+
+        <p class="mt-2 mb-0 fs-4">Associated Bank Account (If Any)</p>
+        <select
+            class="w-100 rounded-3 px-2 py-1 fs-5"
+            type="number"
+            name="associated_bank_account_number"
+            value="{{associated_bank_account_number}}"
+            placeholder="Enter desired associated bank account number">
+            <option value>None</option>
+            {% for bank_account in bank_accounts %}
+                <option value="{{bank_account.account_number}}" {% if associated_bank_account_number == bank_account.account_number %} selected {% endif %} >{{bank_account.account_number}} ({{bank_account.associated_bank.name}})</option>
+            {% endfor %}
+        </select>
+
+        <br />
+        <button type="submit" class="mt-4 px-4 py-1 rounded-pill fs-4 border-0">
+            {{form_action}}
+        </button>
+    </form>
+</div>
+
+{% endblock content %}

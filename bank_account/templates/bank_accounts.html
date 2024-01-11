@@ -12,7 +12,7 @@
 
     <div class="container mt-4 py-2 rounded-3">
         <p class="m-0 fs-3">{{bank_account.account_number}}</p>
-        <p class="m-0 fs-5 mb-1">*{{bank_account.associated_bank.name}}</p>
+        <p class="m-0 fs-5 mb-1">Associated Bank: {{bank_account.associated_bank.name}}</p>
         <a href="{% url 'update_bank_account' bank_account.id %}">
             <button class="px-3 py-1 rounded-pill fs-5 border-0">Update</button>
         </a>

@@ -35,7 +35,7 @@ def add_view(request):
         if bank_name == "" or account_number == "":
             error = "Donot leave the bank name or account number empty!"
         elif len(bank_name) > 255:
-            error = "Length of bank_name cannot be greated than 255 characters!"
+            error = "Length of bank name cannot be greated than 255 characters!"
         else:            
             try:
                 bank_account = BankAccount.objects.get(account_number=account_number)
@@ -77,7 +77,7 @@ def update_view(request, bank_account_id):
         if bank_name == "" or account_number == "":
             error = "Donot leave the bank name or account number empty!"
         elif len(bank_name) > 255:
-            error = "Length of bank_name cannot be greated than 255 characters!"
+            error = "Length of bank name cannot be greater than 255 characters!"
         else:            
             try:
                 bank_account = BankAccount.objects.get(account_number=account_number)

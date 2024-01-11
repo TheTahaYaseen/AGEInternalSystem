@@ -36,7 +36,7 @@ def add_view(request):
         if role == "":
             error = "Donot leave the role empty!"
         elif len(role) > 255:
-            error = "Length of role cannot be greated than 255 characters!"
+            error = "Length of role cannot be greater than 255 characters!"
         else:            
             try:
                 role = Role.objects.get(role=role)
@@ -88,7 +88,7 @@ def update_view(request, role_id):
         if role == "":
             error = "Donot leave the role empty!"
         elif len(role) > 255:
-            error = "Length of role cannot be greated than 255 characters!"
+            error = "Length of role cannot be greater than 255 characters!"
         else:            
             if role != associated_role.role:
                 try:
