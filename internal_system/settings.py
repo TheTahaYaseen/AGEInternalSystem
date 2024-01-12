@@ -28,6 +28,7 @@ INSTALLED_APPS = [
 
     'authentication.apps.AuthenticationConfig',
     'bank_account.apps.BankAccountConfig',
+    'customer.apps.CustomerConfig',
     'company.apps.CompanyConfig',
     'employee.apps.EmployeeConfig',
     'role.apps.RoleConfig',
@@ -51,7 +52,6 @@ TEMPLATES = [
         'DIRS': [
             BASE_DIR / "templates",
             BASE_DIR / "base" / "templates",
-            BASE_DIR / "roles" / "templates"
             ],
         'APP_DIRS': True,
         'OPTIONS': {

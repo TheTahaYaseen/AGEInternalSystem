@@ -23,22 +23,28 @@
                         <a class="nav-link me-1 fs-5" aria-current="page" href="{% url 'employees' %}">Employees</a>
                     </li>
                     {% endif %}
-
-                    {% if has_access_to_shop_management %}
+                    
+                    {% if has_access_to_shop_management or has_access_to_factory_management or request.user.is_superuser %}
                     <li class="nav-item">
-                        <a class="nav-link me-1 fs-5" aria-current="page" href="{% url 'shop' %}">Shop Management</a>
+                        <a class="nav-link me-1 fs-5" aria-current="page" href="{% url 'customers' %}">Customers</a>
                     </li>
                     {% endif %}
 
-                    {% if has_access_to_factory_management %}
+                    {% if has_access_to_shop_management or request.user.is_superuser %}
                     <li class="nav-item">
-                        <a class="nav-link me-1 fs-5" aria-current="page" href="{% url 'factory' %}">Factory Management</a>
+                        <a class="nav-link me-1 fs-5" aria-current="page" href="{% url 'home' %}">Shop</a>
                     </li>
                     {% endif %}
 
-                    {% if has_access_to_warehouse_management %}
+                    {% if has_access_to_factory_management or request.user.is_superuser %}
                     <li class="nav-item">
-                        <a class="nav-link me-1 fs-5" aria-current="page" href="{% url 'warehouse' %}">Warehouse Management</a>
+                        <a class="nav-link me-1 fs-5" aria-current="page" href="{% url 'home' %}">Factory</a>
+                    </li>
+                    {% endif %}
+
+                    {% if has_access_to_warehouse_management or request.user.is_superuser %}
+                    <li class="nav-item">
+                        <a class="nav-link me-1 fs-5" aria-current="page" href="{% url 'home' %}">Warehouse</a>
                     </li>
                     {% endif %}
 
