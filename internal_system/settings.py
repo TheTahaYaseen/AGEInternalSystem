@@ -56,6 +56,9 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'base.context_processors.access_to_shop_management_context',
+                'base.context_processors.access_to_factory_management_context',
+                'base.context_processors.access_to_warehouse_management_context',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
