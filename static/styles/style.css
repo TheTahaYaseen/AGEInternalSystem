@@ -9,9 +9,14 @@ body {
 }
 
 .navbar-brand:hover,
-.nav-link:hover {
+.nav-link:hover,
+.selected {
 	font-weight: bold;
 	color: #232b4b;
+}
+
+.selected {
+	border-bottom: #232b4b solid 2px;
 }
 
 .container {

@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'customer.apps.CustomerConfig',
     'company.apps.CompanyConfig',
     'employee.apps.EmployeeConfig',
+    'expense.apps.ExpenseConfig',
     'role.apps.RoleConfig',
 ]
 

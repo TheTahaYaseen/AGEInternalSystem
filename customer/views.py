@@ -1,9 +1,5 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth.models import User
-
 from .models import Customer
-from bank_account.models import BankAccount
-from role.models import Role
 
 # Create your views here.
 def customers_view(request):

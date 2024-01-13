@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md">
+<nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand fs-1 me-4" href="{% url 'home' %}">AGE</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,54 +6,57 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item">
                     {% if request.user.is_authenticated %}
 
                     {% if request.user.is_superuser %}
                     <li class="nav-item">
-                        <a class="nav-link me-1 fs-5" aria-current="page" href="{% url 'roles' %}">Roles</a>
+                        <a class="{% if '/roles/' in request.path %}selected {% endif %}nav-link me-1 fs-5" aria-current="page" href="{% url 'roles' %}">Roles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-1 fs-5" aria-current="page" href="{% url 'bank_accounts' %}">Bank Accounts</a>
+                        <a class="{% if '/bank_accounts/' in request.path %}selected {% endif %}nav-link me-1 fs-5" aria-current="page" href="{% url 'bank_accounts' %}">Bank Accounts</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-1 fs-5" aria-current="page" href="{% url 'companies' %}">Companies</a>
+                        <a class="{% if '/companies/' in request.path %}selected {% endif %}nav-link me-1 fs-5" aria-current="page" href="{% url 'companies' %}">Companies</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-1 fs-5" aria-current="page" href="{% url 'employees' %}">Employees</a>
+                        <a class="{% if '/employees/' in request.path %}selected {% endif %}nav-link me-1 fs-5" aria-current="page" href="{% url 'employees' %}">Employees</a>
                     </li>
                     {% endif %}
                     
                     {% if has_access_to_shop_management or has_access_to_factory_management or request.user.is_superuser %}
                     <li class="nav-item">
-                        <a class="nav-link me-1 fs-5" aria-current="page" href="{% url 'customers' %}">Customers</a>
+                        <a class="{% if '/customers/' in request.path %}selected {% endif %}nav-link me-1 fs-5" aria-current="page" href="{% url 'customers' %}">Customers</a>
                     </li>
                     {% endif %}
 
-                    {% if has_access_to_shop_management or request.user.is_superuser %}
+                    {% comment %} {% if has_access_to_shop_management or request.user.is_superuser %}
                     <li class="nav-item">
-                        <a class="nav-link me-1 fs-5" aria-current="page" href="{% url 'home' %}">Shop</a>
+                        <a class="{% if '/expenses/shop/' in request.path %}selected {% endif %}nav-link me-1 fs-5" aria-current="page" href="{% url 'expenses' "shop" %}">Shop</a>
                     </li>
                     {% endif %}
 
                     {% if has_access_to_factory_management or request.user.is_superuser %}
                     <li class="nav-item">
-                        <a class="nav-link me-1 fs-5" aria-current="page" href="{% url 'home' %}">Factory</a>
+                        <a class="{% if '/expenses/factory/' in request.path %}selected {% endif %}nav-link me-1 fs-5" aria-current="page" href="{% url 'expenses' "factory" %}">Factory</a>
                     </li>
                     {% endif %}
 
                     {% if has_access_to_warehouse_management or request.user.is_superuser %}
                     <li class="nav-item">
-                        <a class="nav-link me-1 fs-5" aria-current="page" href="{% url 'home' %}">Warehouse</a>
+                        <a class="{% if '/expenses/warehouse/' in request.path %}selected {% endif %}nav-link me-1 fs-5" aria-current="page" href="{% url 'expenses' "warehouse" %}">Warehouse</a>
+                    </li>
+                    {% endif %}
+                     {% endcomment %}
+
+                     <li class="nav-item">
+                        <a class="{% if '/logout/' in request.path %}selected {% endif %}nav-link me-1 fs-5" aria-current="page" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="{% if '/login/' in request.path %}selected {% endif %}nav-link me-1 fs-5" aria-current="page" href="{% url 'login' %}">Login</a>
                     </li>
                     {% endif %}
 
-                    <a class="nav-link me-1 fs-5" aria-current="page" href="{% url 'logout' %}">Logout</a>
-                    {% else %}
-                    <a class="nav-link me-1 fs-5" aria-current="page" href="{% url 'login' %}">Login</a>
-                    {% endif %}
-
-                </li>
             </ul>
         </div>
     </div>

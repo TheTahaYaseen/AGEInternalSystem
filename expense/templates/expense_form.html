@@ -1,0 +1,49 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="container mt-5 px-3 py-4 rounded-3 w-75 mx-auto">
+	<p class="mb-2 fs-1">{{form_action}} Expense</p>
+	<p class="mb-2 fs-5">{{error}}</p>
+
+	<form method="POST">
+		{% csrf_token %}
+
+		<p class="mt-2 mb-0 fs-4">Amount</p>
+		<input
+			class="w-100 rounded-3 px-2 py-1 fs-5"
+			type="number"
+			name="expense_amount"
+			value="{{expense_amount}}"
+			placeholder="Enter desired expense amount" />
+
+		<p class="mt-2 mb-0 fs-4">Category</p>
+		<input
+			class="w-100 rounded-3 px-2 py-1 fs-5"
+			type="text"
+			name="expense_category"
+			value="{{expense_category}}"
+			placeholder="Enter desired expense category"
+			list="expense_categories_list" />
+
+		<datalist id="expense_categories_list">
+			{% for expense_category in expense_categories %}
+			<option value="{{expense_category.category}}">{{expense_category.category}}</option>
+			{% endfor %}
+		</datalist>
+
+		<p class="mt-2 mb-0 fs-4">Reason (Leave Empty If No Reason)</p>
+		<input
+			class="w-100 rounded-3 px-2 py-1 fs-5"
+			type="text"
+			name="expense_reason"
+			value="{{expense_reason}}"
+			placeholder="Enter desired expense reason" />
+
+		<br />
+
+		<button type="submit" class="mt-4 px-4 py-1 rounded-pill fs-4">
+			{{form_action}}
+		</button>
+	</form>
+</div>
+
+{% endblock content %}
