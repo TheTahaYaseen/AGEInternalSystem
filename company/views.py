@@ -117,6 +117,9 @@ def delete_view(request, company_id):
 
     page_title = "Delete Company"
 
+    if not request.user.is_superuser:
+        return redirect("home")
+
     item_category = "Company"
     item = associated_company.name
 

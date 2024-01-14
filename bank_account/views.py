@@ -105,6 +105,9 @@ def delete_view(request, bank_account_id):
 
     page_title = "Delete Bank Account"
 
+    if not request.user.is_superuser:
+        return redirect("home")
+
     item_category = "Bank Account"
     item = associated_bank_account.account_number
 

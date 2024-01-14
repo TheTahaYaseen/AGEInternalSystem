@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from django.urls import reverse
+from employee.context_processors import access_to_context
 
 from employee.models import Employee
 from .models import Expense, ExpenseCategory
@@ -9,7 +10,9 @@ def expenses_view(request, association):
     
     page_title = f"{association.title()} Expenses"
 
-    if not request.user.is_superuser:
+    access = access_to_context(request)
+
+    if not access[f"has_access_to_{association}_management"]:
         return redirect("home")
 
     expenses = Expense.objects.filter(association=association)
@@ -27,7 +30,9 @@ def add_view(request, association):
     expense_category = "" 
     expense_reason = "" 
 
-    if not request.user.is_superuser:
+    access = access_to_context(request)
+
+    if not access[f"has_access_to_{association}_management"]:
         return redirect("home")
     
     if request.method == "POST":
@@ -70,7 +75,9 @@ def update_view(request, association, expense_id):
     expense_category = expense.category.category 
     expense_reason = expense.reason 
 
-    if not request.user.is_superuser:
+    access = access_to_context(request)
+
+    if not access[f"has_access_to_{association}_management"]:
         return redirect("home")
     
     if request.method == "POST":
@@ -101,6 +108,11 @@ def delete_view(request, association, expense_id):
     expense = Expense.objects.get(id=expense_id)
 
     page_title = f"Delete {association.title()} Expense"
+
+    access = access_to_context(request)
+
+    if not access[f"has_access_to_{association}_management"]:
+        return redirect("home")
 
     item_category = "Expense"
     item = f"{expense.amount} for {expense.category.category}"

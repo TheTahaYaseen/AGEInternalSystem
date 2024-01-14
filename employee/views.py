@@ -148,6 +148,9 @@ def delete_view(request, employee_id):
 
     page_title = "Delete Employee"
 
+    if not request.user.is_superuser:
+        return redirect("home")
+
     item_category = "Employee"
     item = associated_employee.name
 

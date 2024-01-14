@@ -142,6 +142,9 @@ def delete_view(request, role_id):
 
     page_title = "Delete Role"
 
+    if not request.user.is_superuser:
+        return redirect("home")
+
     item_category = "Role"
     item = associated_role.role
 

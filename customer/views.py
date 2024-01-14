@@ -1,12 +1,15 @@
 from django.shortcuts import redirect, render
 from .models import Customer
+from employee.context_processors import access_to_context
 
 # Create your views here.
 def customers_view(request):
     
     page_title = "Customers"
 
-    if not request.user.is_superuser:
+    access = access_to_context(request)
+
+    if not access["has_access_to_shop_management"] or not access["has_access_to_factory_management"]:
         return redirect("home")
 
     customers = Customer.objects.all()
@@ -23,7 +26,9 @@ def add_view(request):
     customer_name = "" 
     customer_balance = 0
 
-    if not request.user.is_superuser:
+    access = access_to_context(request)
+
+    if not access["has_access_to_shop_management"] or not access["has_access_to_factory_management"]:
         return redirect("home")
     
     if request.method == "POST":
@@ -60,7 +65,9 @@ def update_view(request, customer_id):
     customer_name = associated_customer.name 
     customer_balance = associated_customer.balance 
 
-    if not request.user.is_superuser:
+    access = access_to_context(request)
+
+    if not access["has_access_to_shop_management"] or not access["has_access_to_factory_management"]:
         return redirect("home")
     
     if request.method == "POST":
@@ -94,6 +101,11 @@ def delete_view(request, customer_id):
     associated_customer = Customer.objects.get(id=customer_id)
 
     page_title = "Delete Customer"
+
+    access = access_to_context(request)
+
+    if not access["has_access_to_shop_management"] or not access["has_access_to_factory_management"]:
+        return redirect("home")
 
     item_category = "Customer"
     item = associated_customer.name
