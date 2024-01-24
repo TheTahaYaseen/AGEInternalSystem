@@ -1,61 +1,86 @@
- {% extends "layout.html" %} {% block content %}
+{% extends "layout.html" %} {% block content %}
 
 <div class="container mt-5 px-3 py-4 rounded-3 w-75 mx-auto">
-    <p class="mb-2 fs-1">{{form_action}} Role</p>
-    <p class="mb-2 fs-5">{{error}}</p>
+	<p class="mb-2 fs-1">{{form_action}} Role</p>
+	<p class="mb-2 fs-5">{{error}}</p>
 
-    <form method="POST">
-        {% csrf_token %}
+	<form method="POST">
+		{% csrf_token %}
 
-        <p class="mt-2 mb-0 fs-4">Role</p>
-        <input
-            class="w-100 rounded-3 px-2 py-1 fs-5"
-            type="text"
-            name="role"
-            value="{{role}}"
-            placeholder="Enter desired role" />
+		<p class="mt-2 mb-0 fs-4">Role</p>
+		<input
+			class="w-100 rounded-3 px-2 py-1 fs-5"
+			type="text"
+			name="role"
+			value="{{role}}"
+			placeholder="Enter desired role"
+		/>
 
-        <p class="mt-2 mb-0 fs-4">Allowed to access shop management?</p>
-        <select
-            class="w-100 rounded-3 px-2 py-1 fs-5"
-            name="access_to_shop_management">
-            <option>
-                No
-            </option>
-            <option {% if access_to_shop_management %} selected {% endif %}value="True">
-                Yes
-            </option>
-        </select>
+		<p class="mt-2 mb-0 fs-4">Allowed to access shop management?</p>
+		<select
+			class="w-100 rounded-3 px-2 py-1 fs-5"
+			name="access_to_shop_management"
+		>
+			<option>No</option>
+			<option
+				{%
+				if
+				access_to_shop_management
+				%}
+				selected
+				{%
+				endif
+				%}value="True"
+			>
+				Yes
+			</option>
+		</select>
 
-        <p class="mt-2 mb-0 fs-4">Allowed to access factory management?</p>
-        <select
-            class="w-100 rounded-3 px-2 py-1 fs-5"
-            name="access_to_factory_management">
-            <option>
-                No
-            </option>
-            <option {% if access_to_factory_management %} selected {% endif %}value="True">
-                Yes
-            </option>
-        </select>
+		<p class="mt-2 mb-0 fs-4">Allowed to access factory management?</p>
+		<select
+			class="w-100 rounded-3 px-2 py-1 fs-5"
+			name="access_to_factory_management"
+		>
+			<option>No</option>
+			<option
+				{%
+				if
+				access_to_factory_management
+				%}
+				selected
+				{%
+				endif
+				%}value="True"
+			>
+				Yes
+			</option>
+		</select>
 
-        <p class="mt-2 mb-0 fs-4">Allowed to access warehouse management?</p>
-        <select
-            class="w-100 rounded-3 px-2 py-1 fs-5"
-            name="access_to_warehouse_management">
-            <option>
-                No
-            </option>
-            <option {% if access_to_warehouse_management %} selected {% endif %}value="True">
-                Yes
-            </option>
-        </select>
+		<p class="mt-2 mb-0 fs-4">Allowed to access warehouse management?</p>
+		<select
+			class="w-100 rounded-3 px-2 py-1 fs-5"
+			name="access_to_warehouse_management"
+		>
+			<option>No</option>
+			<option
+				{%
+				if
+				access_to_warehouse_management
+				%}
+				selected
+				{%
+				endif
+				%}value="True"
+			>
+				Yes
+			</option>
+		</select>
 
-        <br />
-        <button type="submit" class="mt-4 px-4 py-1 rounded-pill fs-4">
-            {{form_action}}
-        </button>
-    </form>
+		<br />
+		<button type="submit" class="mt-4 px-4 py-1 rounded-pill fs-5">
+			{{form_action}}
+		</button>
+	</form>
 </div>
 
 {% endblock content %}

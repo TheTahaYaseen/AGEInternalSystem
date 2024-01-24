@@ -2,27 +2,25 @@
 
 <div class="col-lg-6 col-md-9 col-11 mx-auto">
 	<a href="{% url 'add_role' %}">
-		<button class="mt-4 px-4 py-1 rounded-pill fs-4">Add Role</button>
+		<button class="mt-4 px-4 py-1 rounded-pill fs-5">Add Role</button>
 	</a>
 
 	{% for role in roles %}
 
 	<div class="container mt-4 py-2 rounded-3">
-		<p class="m-0 fs-3">{{role.role}}</p>
+		<p class="m-0 fs-5">{{role.role}}</p>
 		{% if role.access_to_shop_management %}
 		<p class="m-0 fs-6">*Shop management access</p>
-		{% endif %}
-		{% if role.access_to_factory_management %}
+		{% endif %} {% if role.access_to_factory_management %}
 		<p class="m-0 fs-6">*Factory management access</p>
-		{% endif %}
-		{% if role.access_to_warehouse_management %}
+		{% endif %} {% if role.access_to_warehouse_management %}
 		<p class="m-0 mb-2 fs-6">*Warehouse management access</p>
 		{% endif %}
 		<a href="{% url 'update_role' role.id %}">
-			<button class="px-3 rounded-pill fs-5">Update</button>
+			<button class="px-3 rounded-pill fs-6">Update</button>
 		</a>
 		<a href="{% url 'delete_role' role.id %}">
-			<button class="px-3 rounded-pill fs-5">Delete</button>
+			<button class="px-3 rounded-pill fs-6">Delete</button>
 		</a>
 	</div>
 

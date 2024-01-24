@@ -23,7 +23,7 @@
                     </li>
                     {% endif %}
                     
-                    {% if has_access_to_shop_management or has_access_to_factory_management or request.user.is_superuser %}
+                    {% if has_access_to_shop_management or request.user.is_superuser %}
                     <li class="nav-item">
                         <a class="{% if 'customers' in request.path %}selected {% endif %}nav-link fs-5" aria-current="page" href="{% url 'customers' %}">Customers</a>
                     </li>
@@ -31,19 +31,28 @@
 
                     {% if has_access_to_shop_management or request.user.is_superuser %}
                     <li class="nav-item">
-                        <a class="{% if 'expenses/shop' in request.path %}selected {% endif %}nav-link fs-5" aria-current="page" href="{% url 'expenses' "shop" %}">Shop</a>
+                        <a class="{% if 'expenses/shop' in request.path %}selected {% endif %}nav-link fs-5" aria-current="page" href="{% url 'expenses' "shop" %}">S Expenses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="{% if 'inventory/shop' in request.path %}selected {% endif %}nav-link fs-5" aria-current="page" href="{% url 'inventory' "shop" %}">S Inventory</a>
                     </li>
                     {% endif %}
 
                     {% if has_access_to_factory_management or request.user.is_superuser %}
                     <li class="nav-item">
-                        <a class="{% if 'expenses/factory' in request.path %}selected {% endif %}nav-link fs-5" aria-current="page" href="{% url 'expenses' "factory" %}">Factory</a>
+                        <a class="{% if 'expenses/factory' in request.path %}selected {% endif %}nav-link fs-5" aria-current="page" href="{% url 'expenses' "factory" %}">F Expenses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="{% if 'inventory/factory' in request.path %}selected {% endif %}nav-link fs-5" aria-current="page" href="{% url 'inventory' "factory" %}">F Inventory</a>
                     </li>
                     {% endif %}
 
                     {% if has_access_to_warehouse_management or request.user.is_superuser %}
                     <li class="nav-item">
-                        <a class="{% if 'expenses/warehouse' in request.path %}selected {% endif %}nav-link fs-5" aria-current="page" href="{% url 'expenses' "warehouse" %}">Warehouse</a>
+                        <a class="{% if 'expenses/warehouse' in request.path %}selected {% endif %}nav-link fs-5" aria-current="page" href="{% url 'expenses' "warehouse" %}">W Expenses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="{% if 'inventory/warehouse' in request.path %}selected {% endif %}nav-link fs-5" aria-current="page" href="{% url 'inventory' "warehouse" %}">W Inventory</a>
                     </li>
                     {% endif %}
 

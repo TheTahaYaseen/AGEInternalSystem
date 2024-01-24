@@ -2,13 +2,13 @@
 
 <div class="col-lg-6 col-md-9 col-11 mx-auto">
 	<a href="{% url 'add_company' %}">
-		<button class="mt-4 px-4 py-1 rounded-pill fs-4">Add Company</button>
+		<button class="mt-4 px-4 py-1 rounded-pill fs-5">Add Company</button>
 	</a>
 
 	{% for company in companies %}
 
 	<div class="container mt-4 py-2 rounded-3">
-		<p class="m-0 fs-3">{{company.name}}</p>
+		<p class="m-0 fs-5">{{company.name}}</p>
 
 		{% if company.associated_bank_account %}
 		<p class="m-0 fs-6 mb-1">
@@ -18,10 +18,10 @@
 		</p>
 		{% endif %}
 		<a href="{% url 'update_company' company.id %}">
-			<button class="px-3 rounded-pill fs-5">Update</button>
+			<button class="px-3 rounded-pill fs-6">Update</button>
 		</a>
 		<a href="{% url 'delete_company' company.id %}">
-			<button class="px-3 rounded-pill fs-5">Delete</button>
+			<button class="px-3 rounded-pill fs-6">Delete</button>
 		</a>
 	</div>
 

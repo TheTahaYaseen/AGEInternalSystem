@@ -2,7 +2,7 @@
 
 <div class="col-lg-6 col-md-9 col-11 mx-auto">
 	<a href="{% url 'add_bank_account' %}">
-		<button class="mt-4 px-4 py-1 rounded-pill fs-4">
+		<button class="mt-4 px-4 py-1 rounded-pill fs-5">
 			Add Bank Account
 		</button>
 	</a>
@@ -10,15 +10,15 @@
 	{% for bank_account in bank_accounts %}
 
 	<div class="container mt-4 py-2 rounded-3">
-		<p class="m-0 fs-3">{{bank_account.account_number}}</p>
+		<p class="m-0 fs-5">{{bank_account.account_number}}</p>
 		<p class="m-0 fs-6 mb-1">
 			Associated Bank: {{bank_account.associated_bank.name}}
 		</p>
 		<a href="{% url 'update_bank_account' bank_account.id %}">
-			<button class="px-3 rounded-pill fs-5">Update</button>
+			<button class="px-3 rounded-pill fs-6">Update</button>
 		</a>
 		<a href="{% url 'delete_bank_account' bank_account.id %}">
-			<button class="px-3 rounded-pill fs-5">Delete</button>
+			<button class="px-3 rounded-pill fs-6">Delete</button>
 		</a>
 	</div>
 

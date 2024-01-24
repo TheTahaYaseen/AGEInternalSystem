@@ -1,0 +1,58 @@
+{% extends "layout.html" %} {% block content %}
+<span></span>
+{% with request.resolver_match.kwargs.association as association %}
+
+<div class="col-lg-6 col-md-9 col-11 mx-auto">
+	<a href="{% url 'add_fibre_bale' association %}">
+		<button class="mt-4 px-4 py-1 rounded-pill fs-5">Add Fibre Bale</button>
+	</a>
+
+	<hr />
+
+	{% for fibre_bale in fibre_bales %}
+
+	<div class="container mt-4 py-2 rounded-3">
+		<p class="m-0 fs-5">{{fibre_bale.weight}} Kgs</p>
+		<p class="m-0 fs-6">Reported By: {{fibre_bale.added_by.name}}</p>
+
+		<p class="m-0 mt-2"></p>
+
+		<a href="{% url 'update_fibre_bale' association fibre_bale.id %}">
+			<button class="px-3 rounded-pill fs-6">Update</button>
+		</a>
+		<a href="{% url 'delete_fibre_bale' association fibre_bale.id %}">
+			<button class="px-3 rounded-pill fs-6">Delete</button>
+		</a>
+	</div>
+
+	{% endfor %}
+
+	<a href="{% url 'add_rope_bundle' association %}">
+		<button class="mt-4 px-4 py-1 rounded-pill fs-5">
+			Add Rope Bundle
+		</button>
+	</a>
+
+	<hr />
+
+	{% for rope_bundle in rope_bundles %}
+
+	<div class="container mt-4 py-2 rounded-3">
+		<p class="m-0 fs-5">{{rope_bundle.weight}} Kgs</p>
+		<p class="m-0 fs-6">Size: {{rope_bundle.size}} Mm</p>
+		<p class="m-0 fs-6">Reported By: {{rope_bundle.added_by.name}}</p>
+
+		<p class="m-0 mt-2"></p>
+
+		<a href="{% url 'update_rope_bundle' association rope_bundle.id %}">
+			<button class="px-3 rounded-pill fs-6">Update</button>
+		</a>
+		<a href="{% url 'delete_rope_bundle' association rope_bundle.id %}">
+			<button class="px-3 rounded-pill fs-6">Delete</button>
+		</a>
+	</div>
+
+	{% endfor %}
+</div>
+
+{% endwith %} {% endblock content %}

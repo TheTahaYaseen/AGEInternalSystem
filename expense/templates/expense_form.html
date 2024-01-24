@@ -13,7 +13,8 @@
 			type="number"
 			name="expense_amount"
 			value="{{expense_amount}}"
-			placeholder="Enter desired expense amount" />
+			placeholder="Enter desired expense amount"
+		/>
 
 		<p class="mt-2 mb-0 fs-4">Category</p>
 		<input
@@ -22,11 +23,14 @@
 			name="expense_category"
 			value="{{expense_category}}"
 			placeholder="Enter desired expense category"
-			list="expense_categories_list" />
+			list="expense_categories_list"
+		/>
 
 		<datalist id="expense_categories_list">
 			{% for expense_category in expense_categories %}
-			<option value="{{expense_category.category}}">{{expense_category.category}}</option>
+			<option value="{{expense_category.category}}">
+				{{expense_category.category}}
+			</option>
 			{% endfor %}
 		</datalist>
 
@@ -36,11 +40,12 @@
 			type="text"
 			name="expense_reason"
 			value="{{expense_reason}}"
-			placeholder="Enter desired expense reason" />
+			placeholder="Enter desired expense reason"
+		/>
 
 		<br />
 
-		<button type="submit" class="mt-4 px-4 py-1 rounded-pill fs-4">
+		<button type="submit" class="mt-4 px-4 py-1 rounded-pill fs-5">
 			{{form_action}}
 		</button>
 	</form>

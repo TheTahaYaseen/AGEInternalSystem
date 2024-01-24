@@ -11,20 +11,20 @@
 	{% for expense in expenses %}
 
 	<div class="container mt-4 py-2 rounded-3">
-		<p class="m-0 fs-3">{{expense.amount}}</p>
-		<p class="m-0 fs-5">Category: {{expense.category.category}}</p>
+		<p class="m-0 fs-5">Rs. {{expense.amount}}</p>
+		<p class="m-0 fs-6">Category: {{expense.category.category}}</p>
 		{% if expense.reason %}
-		<p class="m-0 fs-5">Reason: {{expense.reason}}</p>
+		<p class="m-0 fs-6">Reason: {{expense.reason}}</p>
 		{% endif %}
-		<p class="m-0 fs-5">Reported By: {{expense.reported_by.name}}</p>
+		<p class="m-0 fs-6">Reported By: {{expense.reported_by.name}}</p>
 
 		<p class="m-0 mt-2"></p>
 
 		<a href="{% url 'update_expense' association expense.id %}">
-			<button class="px-3 rounded-pill fs-5">Update</button>
+			<button class="px-3 rounded-pill fs-6">Update</button>
 		</a>
 		<a href="{% url 'delete_expense' association expense.id %}">
-			<button class="px-3 rounded-pill fs-5">Delete</button>
+			<button class="px-3 rounded-pill fs-6">Delete</button>
 		</a>
 	</div>
 

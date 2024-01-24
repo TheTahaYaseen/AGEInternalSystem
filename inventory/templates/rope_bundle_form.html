@@ -1,31 +1,32 @@
 {% extends "layout.html" %} {% block content %}
 
 <div class="container mt-5 px-3 py-4 rounded-3 w-75 mx-auto">
-	<p class="mb-2 fs-1">{{form_action}} Customer</p>
+	<p class="mb-2 fs-1">{{form_action}} Rope Bundle</p>
 	<p class="mb-2 fs-5">{{error}}</p>
 
 	<form method="POST">
 		{% csrf_token %}
 
-		<p class="mt-2 mb-0 fs-4">Name</p>
-		<input
-			class="w-100 rounded-3 px-2 py-1 fs-5"
-			type="text"
-			name="customer_name"
-			value="{{customer_name}}"
-			placeholder="Enter desired customer name"
-		/>
-
-		<p class="mt-2 mb-0 fs-4">Balance</p>
+		<p class="mt-2 mb-0 fs-4">Weight</p>
 		<input
 			class="w-100 rounded-3 px-2 py-1 fs-5"
 			type="number"
-			name="customer_balance"
-			value="{{customer_balance}}"
-			placeholder="Enter desired customer balance"
+			name="rope_bundle_weight"
+			value="{{rope_bundle_weight}}"
+			placeholder="Enter desired fibre bale weight"
+		/>
+
+		<p class="mt-2 mb-0 fs-4">Size</p>
+		<input
+			class="w-100 rounded-3 px-2 py-1 fs-5"
+			type="number"
+			name="rope_bundle_size"
+			value="{{rope_bundle_size}}"
+			placeholder="Enter desired fibre bale size"
 		/>
 
 		<br />
+
 		<button type="submit" class="mt-4 px-4 py-1 rounded-pill fs-5">
 			{{form_action}}
 		</button>

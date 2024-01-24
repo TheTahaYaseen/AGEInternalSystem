@@ -2,15 +2,17 @@
 
 <div class="col-lg-6 col-md-9 col-11 mx-auto">
 	<a href="{% url 'add_employee' %}">
-		<button class="mt-4 px-4 py-1 rounded-pill fs-4">Add Employee</button>
+		<button class="mt-4 px-4 py-1 rounded-pill fs-5">Add Employee</button>
 	</a>
 
 	{% for employee in employees %}
 
 	<div class="container mt-4 py-2 rounded-3">
-		<p class="m-0 fs-3">{{employee.name}}</p>
-		<p class="m-0 fs-5">{{employee.associated_role.role}}</p>
-		<p class="m-0 fs-6">Login Username: {{employee.associated_user.username}}</p>
+		<p class="m-0 fs-5">{{employee.name}}</p>
+		<p class="m-0 fs-6">{{employee.associated_role.role}}</p>
+		<p class="m-0 fs-6">
+			Login Username: {{employee.associated_user.username}}
+		</p>
 
 		{% if employee.associated_bank_account %}
 		<p class="m-0 fs-6">
@@ -23,10 +25,10 @@
 		<p class="m-0 mt-2"></p>
 
 		<a href="{% url 'update_employee' employee.id %}">
-			<button class="px-3 rounded-pill fs-5">Update</button>
+			<button class="px-3 rounded-pill fs-6">Update</button>
 		</a>
 		<a href="{% url 'delete_employee' employee.id %}">
-			<button class="px-3 rounded-pill fs-5">Delete</button>
+			<button class="px-3 rounded-pill fs-6">Delete</button>
 		</a>
 	</div>
 
